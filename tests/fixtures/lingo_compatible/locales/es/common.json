@@ -1,0 +1,22 @@
+{
+  "brand": {
+    "name": "DX"
+  },
+  "welcome": "Hola, {name}. Tienes {{count}} tareas nuevas.",
+  "cta": "Abre [panel]({url})",
+  "icu": "{count, plural, one {# archivo} other {# archivos}}",
+  "html": "Haz clic en <strong>{label}</strong> para continuar.",
+  "config": {
+    "apiUrl": "https://api.dx.local",
+    "build": "2026.05"
+  },
+  "releaseNotes": {
+    "manualOverride": "Manual Spanish release note approved by editor."
+  },
+  "support": {
+    "tagline": "Creado local-first."
+  },
+  "footer": {
+    "tagline": "Creado local-first."
+  }
+}

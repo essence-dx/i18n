@@ -1,0 +1,25 @@
+{
+  "brand": {
+    "name": "DX"
+  },
+  "welcome": "Hello, {name}. You have {{count}} new tasks.",
+  "cta": "Open [dashboard]({url})",
+  "icu": "{count, plural, one {# file} other {# files}}",
+  "html": "Click <strong>{label}</strong> to continue.",
+  "config": {
+    "apiUrl": "https://api.dx.local",
+    "build": "2026.05"
+  },
+  "internal": {
+    "trace": "do-not-translate"
+  },
+  "releaseNotes": {
+    "manualOverride": "Keep this target-authored note."
+  },
+  "support": {
+    "tagline": "Built local-first."
+  },
+  "footer": {
+    "tagline": "Built local-first."
+  }
+}

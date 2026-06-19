@@ -1,0 +1,25 @@
+{
+  "$schema": "https://lingo.dev/schema/i18n.json",
+  "version": "1.15",
+  "locale": {
+    "source": "en",
+    "targets": ["es"]
+  },
+  "buckets": {
+    "json": {
+      "include": ["locales/[locale]/common.json"],
+      "lockedKeys": ["brand/name", "config/*"],
+      "ignoredKeys": ["internal/*"],
+      "preservedKeys": ["releaseNotes/manualOverride"]
+    },
+    "markdown": {
+      "include": ["docs/[locale]/*.md"]
+    }
+  },
+  "provider": {
+    "id": "ollama",
+    "model": "llama3.1",
+    "baseUrl": "http://127.0.0.1:11434",
+    "prompt": "Translate from {source} to {target}. Preserve placeholders, Markdown links, HTML tags, code fences, and frontmatter keys."
+  }
+}
