@@ -53,7 +53,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         download_whisper_model(model_path).await?;
     }
 
-    let whisper_stt = WhisperSTT::new(model_path, Some("en".to_string()));
+    let whisper_stt = WhisperSTT::new(model_path.to_string(), Some("en".to_string()));
     match whisper_stt.transcribe_file(wav_path).await {
         Ok(transcript) => {
             println!("✓ Whisper Transcript:");

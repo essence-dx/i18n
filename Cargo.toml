@@ -74,25 +74,25 @@ path = "src/bin/dx_i18n.rs"
 name = "test-features"
 path = "playgrounds/test_features.rs"
 
-[[bin]]
-name = "sts-demo"
-path = "playgrounds/sts_demo.rs"
-required-features = ["whisper"]
+# [[bin]]
+# name = "sts-demo"
+# path = "playgrounds/sts_demo.rs"
+# required-features = ["whisper"]
 
-[[bin]]
-name = "sts-test"
-path = "playgrounds/sts_test.rs"
-required-features = ["whisper"]
+# [[bin]]
+# name = "sts-test"
+# path = "playgrounds/sts_test.rs"
+# required-features = ["whisper"]
 
-[[bin]]
-name = "auto-sts-demo"
-path = "playgrounds/auto_sts_demo.rs"
-required-features = ["whisper"]
+# [[bin]]
+# name = "auto-sts-demo"
+# path = "playgrounds/auto_sts_demo.rs"
+# required-features = ["whisper"]
 
-[[bin]]
-name = "test-audio"
-path = "playgrounds/test_audio.rs"
-required-features = ["whisper"]
+# [[bin]]
+# name = "test-audio"
+# path = "playgrounds/test_audio.rs"
+# required-features = ["whisper"]
 
 [[example]]
 name = "wisprflow_mic"
