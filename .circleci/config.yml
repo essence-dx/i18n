@@ -36,7 +36,7 @@ jobs:
             git config --global url."https://x-access-token:$env:CIRCLECI_GH_TOKEN@github.com/".insteadOf "https://github.com/"
             git config --global url."https://x-access-token:$env:CIRCLECI_GH_TOKEN@github.com/".insteadOf "ssh://git@github.com/"
             $env:CARGO_NET_GIT_FETCH_WITH_CLI = "true"
-            cargo build --release
+            cargo build --release --no-default-features
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
             New-Item -ItemType Directory -Path dist -Force | Out-Null
             if (Test-Path "target\release\dx_i18n.exe") {
