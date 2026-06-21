@@ -22,22 +22,26 @@ jobs:
             Invoke-WebRequest -Uri "https://win.rustup.rs/x86_64" -OutFile "rustup-init.exe"
             .\rustup-init.exe -y --default-toolchain 1.94.0 --profile minimal
       - run:
+          name: Install build dependencies (LLVM, gh)
+          shell: powershell.exe
+          command: |
+            choco install llvm gh -y --no-progress --limit-output
+      - run:
           name: Build Windows release artifacts
           shell: powershell.exe
           command: |
-            $env:Path = "$env:USERPROFILE\.cargo\bin;$env:Path"
-            $ErrorActionPreference = "Stop"
+            $env:Path = "$env:USERPROFILE\.cargo\bin;C:\Program Files\LLVM\bin;$env:Path"
+            $env:LIBCLANG_PATH = "C:\Program Files\LLVM\bin"
             $env:CIRCLECI_GH_TOKEN = [System.Environment]::GetEnvironmentVariable("CIRCLECI_GH_TOKEN")
             git config --global url."https://x-access-token:$env:CIRCLECI_GH_TOKEN@github.com/".insteadOf "https://github.com/"
             git config --global url."https://x-access-token:$env:CIRCLECI_GH_TOKEN@github.com/".insteadOf "ssh://git@github.com/"
             $env:CARGO_NET_GIT_FETCH_WITH_CLI = "true"
             cargo build --release
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
             New-Item -ItemType Directory -Path dist -Force | Out-Null
-            
             if (Test-Path "target\release\dx_i18n.exe") {
                 Copy-Item -Path "target\release\dx_i18n.exe" -Destination "dist\dx-i18n.exe" -Force
             }
-
             if ($env:CIRCLE_SHA1) {
                 $shortSha = $env:CIRCLE_SHA1.Substring(0, 12)
             } else {
@@ -55,8 +59,6 @@ jobs:
           name: Upload artifact to GitHub release
           shell: powershell.exe
           command: |
-            choco install gh -y --no-progress --limit-output
-            refreshenv
             $env:GH_TOKEN = [System.Environment]::GetEnvironmentVariable("CIRCLECI_GH_TOKEN")
             $tag = "windows"
             gh release create $tag --repo $env:CIRCLE_PROJECT_USERNAME/$env:CIRCLE_PROJECT_REPONAME --title "Windows Release" --target $env:CIRCLE_SHA1 2>$null; $LASTEXITCODE = 0
