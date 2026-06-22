@@ -39,8 +39,8 @@ jobs:
             cargo build --release --no-default-features
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
             New-Item -ItemType Directory -Path dist -Force | Out-Null
-            if (Test-Path "target\release\dx_i18n.exe") {
-                Copy-Item -Path "target\release\dx_i18n.exe" -Destination "dist\dx-i18n.exe" -Force
+            if (Test-Path "target\release\dx-i18n.exe") {
+                Copy-Item -Path "target\release\dx-i18n.exe" -Destination "dist\dx-i18n.exe" -Force
             }
             if ($env:CIRCLE_SHA1) {
                 $shortSha = $env:CIRCLE_SHA1.Substring(0, 12)
