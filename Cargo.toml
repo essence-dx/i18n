@@ -48,7 +48,7 @@ html-escape = "0.2"
 sha2 = "0.10"
 whisper-rs = { version = "0.12", optional = true, default-features = false }
 hound = "3.5"
-cpal = "0.15"
+cpal = { version = "0.15", optional = true }
 num_cpus = "1.16"
 libc = "0.2"
 Rust_Grammar = { version = "2.2", optional = true }
@@ -57,6 +57,7 @@ Rust_Grammar = { version = "2.2", optional = true }
 default = ["whisper"]
 whisper = ["dep:whisper-rs"]
 wisprflow = ["dep:Rust_Grammar"]
+mic = ["dep:cpal"]
 
 [lib]
 name = "dx_i18n"
@@ -97,7 +98,7 @@ path = "playgrounds/test_features.rs"
 [[example]]
 name = "wisprflow_mic"
 path = "examples/wisprflow_mic.rs"
-required-features = ["whisper", "wisprflow"]
+required-features = ["whisper", "wisprflow", "mic"]
 
 [[example]]
 name = "wisprflow_file_test"
