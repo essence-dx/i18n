@@ -9,6 +9,14 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let cfg = dx_i18n::dx_config::I18nDxConfig::load();
+    std::fs::create_dir_all(&cfg.sr_dir)?;
+    std::fs::create_dir_all(&cfg.receipts_dir)?;
+    cfg.write_sr("i18n", &[("tool", "i18n"), ("action", "run"), ("status", "ok")])?;
+    if let Some(status) = cfg.read_status("i18n") {
+        eprintln!("[i18n] sr cache verified: {} entries", status.len());
+    }
+
     let args = Args::parse(env::args().skip(1).collect())
         .map_err(|message| std::io::Error::new(std::io::ErrorKind::InvalidInput, message))?;
     let workspace = LocalizationWorkspace::load(&args.root)?;

@@ -7,6 +7,7 @@
 //! - `tts`: Text-to-speech functionality supporting Microsoft Edge TTS and Google TTS
 //! - `sts`: Speech-to-text functionality using Whisper
 
+pub mod dx_config;
 pub mod error;
 pub mod locale;
 pub mod localization;
