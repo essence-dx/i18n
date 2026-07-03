@@ -13,6 +13,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     std::fs::create_dir_all(&cfg.sr_dir)?;
     std::fs::create_dir_all(&cfg.receipts_dir)?;
     cfg.write_sr("i18n", &[("tool", "i18n"), ("action", "run"), ("status", "ok")])?;
+    cfg.write_global_sr("i18n", &[("tool", "i18n"), ("action", "run"), ("status", "ok")])?;
     if let Some(status) = cfg.read_status("i18n") {
         eprintln!("[i18n] sr cache verified: {} entries", status.len());
     }
