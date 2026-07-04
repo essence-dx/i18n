@@ -52,7 +52,7 @@ cpal = { version = "0.15", optional = true }
 num_cpus = "1.16"
 libc = "0.2"
 Rust_Grammar = { version = "2.2", optional = true }
-serializer = { path = "../serializer", package = "dx-serializer", version = "0.1.0" }
+serializer = { path = "../serializer", package = "dx-serializer", version = "1.0.0" }
 dirs = "6.0"
 
 [features]
