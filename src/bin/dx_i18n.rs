@@ -699,6 +699,11 @@ impl CliFilters {
 
 impl Args {
     fn parse(raw_args: Vec<String>) -> Result<Self, String> {
+        if raw_args.first().map(String::as_str) == Some("--version") {
+            println!("dx-i18n 1.0.0");
+            std::process::exit(0);
+        }
+
         let mut root = env::current_dir().map_err(|error| error.to_string())?;
         let mut args = raw_args.into_iter().peekable();
 
